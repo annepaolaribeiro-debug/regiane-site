@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Regiane Tischler – Terapias Integrativas</title>
+
+  <!-- Fontes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-lilac: #efe7f5;
+      --lilac-deep: #6B4187;
+      --gold: #D4AF37;
+      --gold-soft: rgba(212,175,55,.35);
+      --card: #ffffffee;
+      --muted: #6b596e;
+      --shadow: 0 12px 30px rgba(107,65,135,0.12);
+      --maxw: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Poppins';
+      background: linear-gradient(180deg, var(--bg-lilac) 0%, #f9f4fb 100%);
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* ----------- PARTICULAS DOURADAS ----------- */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle, rgba(212,175,55,0.22) 1px, transparent 2px),
+        radial-gradient(circle, rgba(212,175,55,0.18) 1px, transparent 2px);
+      background-size: 180px 180px, 260px 260px;
+      opacity:.45;
+      animation: sparkle 28s linear infinite;
+      z-index:-1;
+    }
+
+    @keyframes sparkle{
+      0%{ transform: translate(0,0); }
+      50%{ transform: translate(-20px,-40px); }
+      100%{ transform: translate(0,0); }
+    }
+
+
+    /* CONTAINER */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:26px 20px 80px;
+    }
+
+    /* HEADER */
+    header{text-align:center; margin-bottom:6px;}
+
+    .top-img{
+      width:220px;
+      max-width:42%;
+      border-radius:16px;
+      box-shadow:0 20px 42px rgba(107,65,135,.16);
+      border:4px solid rgba(255,255,255,.4);
+      transition:all .4s ease;
+    }
+    .top-img:hover{
+      transform:translateY(-6px) scale(1.02);
+    }
+
+    h1{
+      font-family:'Playfair Display';
+      font-size:28px;
+      color:var(--lilac-deep);
+      margin:12px 0 0;
+    }
+
+    .lead{ color:var(--muted); font-weight:500; margin:2px 0 10px; }
+
+
+    /* ----------- BOTÕES PRINCIPAIS ----------- */
+    .btn-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:14px; }
+
+    .btn{
+      padding:12px 18px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:600;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* brilho passando */
+    .btn::after{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-60%;
+      width:50%;
+      height:100%;
+      background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.6) 50%, transparent 100%);
+      transform:skewX(-22deg);
+      animation: shinebtn 4s infinite;
+    }
+
+    @keyframes shinebtn{
+      0%{ left:-60%; }
+      40%{ left:120%; }
+      100%{ left:120%; }
+    }
+
+    .btn-gold{
+      background:linear-gradient(90deg, #D4AF37, #f0d88a);
+      color:#1b1220;
+    }
+
+    .btn-lilac{
+      background:linear-gradient(90deg, #8b5fbf, #6b4187);
+      color:#fff;
+    }
+
+
+    /* ----------- SERVIÇOS ----------- */
+    .services{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      margin-top:30px;
+    }
+    @media(min-width:880px){
+      .services{ grid-template-columns:repeat(3,1fr); }
+    }
+
+    .serv-card{
+      background:var(--card);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(212,175,55,0.3);
+      position:relative;
+      overflow:hidden;
+      height:320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:all .35s ease;
+    }
+
+    .serv-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      padding:2px;
+      background:linear-gradient(135deg, rgba(212,175,55,.65), rgba(255,255,255,0), rgba(212,175,55,.4));
+      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+              mask-composite:exclude;
+      pointer-events:none;
+    }
+
+    .serv-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 28px 68px rgba(107,65,135,.22);
+    }
+
+
+    /* ANIMAÇÃO AO APARECER */
+    .fade{
+      opacity:0;
+      animation: fadeUp .9s forwards;
+    }
+    .d1{ animation-delay:.15s }
+    .d2{ animation-delay:.25s }
+    .d3{ animation-delay:.35s }
+
+    @keyframes fadeUp{
+      0%{ opacity:0; transform:translateY(18px); }
+      100%{ opacity:1; transform:translateY(0); }
+    }
+
+
+    .serv-title{ font-family:'Playfair Display'; color:var(--lilac-deep); }
+    .serv-desc{ color:var(--muted); font-size:15px; margin:4px 0 14px; }
+
+    .serv-cta{
+      background:var(--lilac-deep);
+      color:white;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+
+    /* ONDAS */
+    .waves{
+      margin-top:80px;
+      position:relative;
+      width:100%;
+      height:80px;
+      background:url('https://i.imgur.com/Dtq3P6G.png');
+      background-size:cover;
+      opacity:.35;
+    }
+
+
+    /* FLOATING BUTTONS */
+    .float-actions{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      z-index:2200;
+    }
+    .float-circle{
+      width:56px; height:56px;
+      background:#000;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-decoration:none;
+      box-shadow:0 12px 24px rgba(0,0,0,.22);
+    }
+    .float-wa{ background:#25D366 }
+    .float-ig{ background:#C13584 }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="fade d1">
+      <img src="reg.img.jpeg" class="top-img" alt="">
+      <h1>Regiane Tischler</h1>
+      <p class="lead">Terapias Integrativas • Constelação Sistêmica • dōTERRA</p>
+
+      <div class="btn-row">
+        <a class="btn btn-gold" href="https://www.instagram.com/regtischler" target="_blank">
+          <svg width="20" height="20" fill="white"><circle cx="10" cy="10" r="7"/></svg>
+          instagram
+        </a>
+
+        <a class="btn btn-lilac" href="https://wa.me/5549984071863" target="_blank">
+          <svg width="22" height="22" fill="white"><circle cx="11" cy="11" r="9"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </header>
+
+
+    <!-- ----------- SERVIÇOS ----------- -->
+    <section class="services">
+
+      <article class="serv-card fade d1">
+        <div>
+          <h3 class="serv-title">Constelação Sistêmica Familiar</h3>
+          <p class="serv-desc">Identificação e reorganização de padrões familiares, trazendo clareza, equilíbrio e novos movimentos ao sistema.</p>
+        </div>
+
+        <!-- WHATSAPP AGENDAR AUTOMÁTICO -->
+        <a class="serv-cta" 
+           href="https://wa.me/5549984071863?text=Olá%2C%20gostaria%20de%20agendar%20uma%20sessão%20de%20Constelação%20Sistêmica." 
+           target="_blank">Agendar</a>
+      </article>
+
+
+      <article class="serv-card fade d2">
+        <div>
+          <h3 class="serv-title">Auriculoterapia</h3>
+          <p class="serv-desc">Terapia por pontos energéticos na orelha para ansiedade, dores, insônia, equilíbrio emocional e corpo-mente.</p>
+        </div>
+
+        <a class="serv-cta" 
+           href="https://wa.me/5549984071863?text=Olá%2C%20gostaria%20de%20agendar%20uma%20sessão%20de%20Auriculoterapia." 
+           target="_blank">Agendar</a>
+      </article>
+
+
+      <article class="serv-card fade d3">
+        <div>
+          <h3 class="serv-title">Alinhamento de Chakras & Reiki</h3>
+          <p class="serv-desc">Harmonização dos centros energéticos, reduzindo tensões, restaurando o fluxo vital e elevando o campo emocional.</p>
+        </div>
+
+        <a class="serv-cta" 
+           href="https://wa.me/5549984071863?text=Olá%2C%20gostaria%20de%20agendar%20um%20atendimento%20de%20Alinhamento%20de%20Chakras%20e%20Reiki." 
+           target="_blank">Agendar</a>
+      </article>
+
+    </section>
+
+  </div>
+
+  <div class="waves"></div>
+
+  <!-- BOTÕES FLUTUANTES -->
+  <div class="float-actions">
+    <a class="float-circle float-wa" href="https://wa.me/5549984071863" target="_blank">
+      🟢
+    </a>
+    <a class="float-circle float-ig" href="https://instagram.com/regtischler" target="_blank">
+      📸
+    </a>
+  </div>
+
+</body>
+</html>
